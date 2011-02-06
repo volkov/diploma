@@ -1,6 +1,10 @@
 \documentclass[a4paper,10pt]{report}
 \usepackage[utf8x]{inputenc}
-
+\usepackage[english,russian]{babel} 
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage[12pt]{extsizes}
 % Title Page
 \title{Мой диплом}
 \author{Волков Сергей}
@@ -11,5 +15,20 @@
 
 \begin{abstract}
 \end{abstract}
+
+\include{chapters/introduction}
+\include{chapters/main1}
+\include{chapters/main2}
+\include{chapters/conclusion}
+
+\begin{thebibliography}{9}
+\bibitem{pimenov} Пименов Александр, \href{http://mmcg.z52.ru/drupal/node/3}{Hadoop Nutch и Lucene v3}, 2009.
+\bibitem{nutchbib} D Cutting, Nutch: an Open-Source Platform for Web Search
+\bibitem{lucene} E Hatcher, O Gospodnetic, Lucene in action
+\bibitem{nutchscore} R Khare, D Cutting, K Sitaker, A Rifkin, Nutch: A flexible and scalable open-source web search engine
+\bibitem{hadoop} T White, Hadoop: The Definitive Guide
+
+\end{thebibliography}
+
 
 \end{document}          
