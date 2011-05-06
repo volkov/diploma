@@ -1,6 +1,6 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1298471009876" ID="ID_1342345500" MODIFIED="1298471022436" TEXT="&#x414;&#x438;&#x43f;&#x43b;&#x43e;&#x43c;">
+<node CREATED="1298471009876" ID="ID_1342345500" MODIFIED="1304513315625" TEXT="&#x414;&#x438;&#x43f;&#x43b;&#x43e;&#x43c;">
 <node CREATED="1298471023347" ID="ID_1656558296" MODIFIED="1298471028146" POSITION="right" TEXT="&#x412;&#x432;&#x435;&#x434;&#x435;&#x43d;&#x438;&#x435;">
 <node CREATED="1298471032550" ID="ID_761931438" MODIFIED="1298471051481" TEXT="data"/>
 <node CREATED="1298471051878" ID="ID_1264743535" MODIFIED="1298471053185" TEXT="www">
@@ -21,6 +21,9 @@
 <node CREATED="1298471083564" ID="ID_1118457128" MODIFIED="1298471088584" TEXT="google yahoo"/>
 </node>
 </node>
+</node>
+<node CREATED="1304513317721" ID="ID_1439534680" MODIFIED="1304513325291" POSITION="left" TEXT="&#x41e;&#x431;&#x437;&#x43e;&#x440; &#x441;&#x440;&#x435;&#x434;&#x441;&#x442;&#x432;">
+<node CREATED="1304513328279" ID="ID_282433592" MODIFIED="1304513332699" TEXT="&#x43f;&#x43e;&#x438;&#x441;&#x43a;&#x43e;&#x432;&#x44b;&#x435; &#x440;&#x43e;&#x431;&#x43e;&#x442;&#x44b;"/>
 </node>
 </node>
 </map>

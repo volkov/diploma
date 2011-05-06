@@ -1,4 +1,6 @@
 *.aux
 *.log
 *.out
+*.backup
+*.orig
 *~
