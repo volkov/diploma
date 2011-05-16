@@ -10,6 +10,11 @@
 \usepackage{rotating}
 \usepackage{amsmath}
 \usepackage{hyperref}
+
+% \usepackage[12pt]{extsizes}
+% \usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+% \renewcommand{\baselinestretch}{1.5}
+
 % Title Page
 \title{Разработка алгоритмов обеспечения качества распределенного поисковго робота для сети Интернет}
 \author{Волков Сергей}
@@ -22,14 +27,18 @@
 % \end{abstract}
 
 \include{chapters/introduction}
-%\include{chapters/main1}
+\include{chapters/main1}
 %\include{chapters/main2}
 %\include{chapters/conclusion}
 
 \begin{thebibliography}{9}
+\bibitem{crawl} Junghoo Cho, Hector Garcia-Molina, Lawrence Page: Efficient Crawling Through URL Ordering, 1998.
 \bibitem{googlemr} Jeffrey Dean and Sanjay Ghemawat: MapReduce: Simplified Data Processing on Large Clusters, 2004.
 \bibitem{hadoopdefguide} Tom White: Hadoop: The Definitive Guide, 2009
 \bibitem{gfs} Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung: The Google File System, 2003.
+\bibitem{focused} Martin Ester, Matthias Groß, Hans-Peter Kriegel: Focused Web Crawling: A Generic Framework for Specifying the User Interest and for Adaptive Crawling Strategies, 2001.
+
+\bibitem{opic} Serge Abiteboul, Mihai Preda, Grégory Cobena: Adaptive On-Line Page Importance Computation, 2003
 \bibitem{pimenov} Пименов Александр, \href{http://mmcg.z52.ru/drupal/node/3}{Hadoop Nutch и Lucene v3}, 2009.
 \bibitem{nutchbib} D Cutting, Nutch: an Open-Source Platform for Web Search
 \bibitem{lucene} E Hatcher, O Gospodnetic, Lucene in action
