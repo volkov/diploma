@@ -17,31 +17,45 @@
 Были рассмотрены следующие реализации:
 \begin{itemize}
  \item Memcached\footnote{\href{http://memcached.org/}{http://memcached.org/}} --- система кэширования данных разработанная для ускорения веб приложений. Изначально была создана для LiveJournal в 2003 году. Данные хранятся только в памяти, что позволяет осуществлять быстрый доступ, но при этом необходимо отдельно заботится о сохранении данных на диск.
- \item MongoDB\footnote{\href{http://mongodb.org/}{http://mongodb.org/}} -- документо-ориентированная Key Value СУБД. MondoDB позиционируют себя как промежуточное звено между простейшими Key Value хранилищами и Реляционными СУБД.
+ \item MongoDB\footnote{\href{http://mongodb.org/}{http://mongodb.org/}} --- документо-ориентированная Key Value СУБД. MondoDB позиционируют себя как промежуточное звено между простейшими Key Value хранилищами и реляционными СУБД.
  \item Project Voldemort\footnote{\href{http://project-voldemort.com/}{http://project-voldemort.com/}} --- распределенное отказоустойчивое Key Value хранилище. Одним из приемуществ данной системы является отсутсвие единой точки отказа (Single point of failure). Project Voldemort используется в качестве хранилища данных в LinkedIn\footnote{\href{http://www.linkedin.com/}{http://www.linkedin.com/}}.
+ \item Tokyo Cabinet\footnote{\href{http://fallabs.com/tokyocabinet/}{http://fallabs.com/tokyocabinet/}} --- встроенное Key Value хранилище. Поддерживает как хранение данных только в памяти, так и на диске. Для удаленного доступа используется Tokyo Tyrant\footnote{\href{http://fallabs.com/tokyotyrant/}{http://fallabs.com/tokyotyrant/}}. Протокол Tokyo Tyrant почти полностью совместим с Memcached.
 \end{itemize}
 
-\begin{table}[h]
-\caption{\label{tab:crawlers}Сравнение Key Value СУБД.}
-\begin{center}
+Сравнение данных СУБД представлено в таблице \ref{tab:kv}.
 
+\begin{table}[h]
+\caption{\label{tab:kv}Сравнение Key Value СУБД.}
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-Название & put & get & Устойчивость & Распределенность & Репликация & Модель данных\\
+Название & Memcached & MongoDb & Project Voldemort & Tokyo Cabinet\\
 \hline
-Memcached & 4.03 p/ms & 4.54 g/ms & - & + & - & bin\\
+Операции put/ms & 4.03 & 6.65 & 1.21 & 3.25 \\
 \hline
-MongoDB & 6.65 p/ms & 3.05 g/ms & + & + & + & json\\
+Операции get/ms & 4.54 & 3.05 & 1.01 & 4.39 \\
 \hline
-Project Voldemort & 1.21 p/ms & 1.01 g/ms & + & + & + & json\\
+Устойчивость & - & + & + & + \\
 \hline
-Tokyo Cabinet & 3.25 p/ms & 4.39 g/ms & + & - & - & bin\\
+Распределенность & + & + & + & - \\
+\hline
+Репликация & - & + & + & - \\
+\hline
+Модель данных & bin & object & object & bin\\
 \hline
 \end{tabular}
-
 \end{center}
 \end{table}
 
+\subsubsection{Измерение производительности}
+Так как время выполнения put и get запросов является критическим для нашей системы, было решено разработать утилиту\footnote{\href{http://github.com/volkov/kvstorage-test}{http://github.com/volkov/kvstorage-test}} измеряющую производительность различных СУБД на данных, с которыми потом будет осуществляться работа. Результаты данных тестов представлены в строчках put и get таблицы \ref{tab:kv}.
+
+Тестирование происходило по следующему сценарию:
+\begin{enumerate}
+ \item в базу добавляются все URL из рабочего индекса (5688210 ссылок);
+ \item проверяется наличие всех URL из индекса по одному из сегметнов (52583 ссылок).
+\end{enumerate}
+Добавление и проверка производятся в 10 потоков. Сервер и клиент находятся на разных хостах ($1.2$ GHz 2007 Xeon, 1.7GB RAM, скорость последовательного доступа к диску 50MB/s), время ping между хостами --- 0.6ms.
 
 \section{Черные списки}
 При долгой работе сборки значительно увеличивается размер базы ссылок crawldb.
